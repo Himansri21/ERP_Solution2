@@ -1,0 +1,5 @@
+GradeID,StudentID,Subject,ExamType,Score,Grade,Date
+3001.0,101,Introduction to Python,Midterm,95.0,A,2024-06-10
+3002.0,103,Business Fundamentals,Midterm,78.0,C,2024-06-11
+3003.0,101,Introduction to Python,Final,88.0,B,2024-06-12
+,17,March,Scanned,2025.0,A,

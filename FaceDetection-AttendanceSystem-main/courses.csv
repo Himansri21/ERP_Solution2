@@ -1,0 +1,4 @@
+CourseID,CourseName,Department,Credits,TeacherID
+C201,Introduction to Python,Computer Science,4,501
+C202,Business Fundamentals,Business Administration,3,503
+C203,Literary Analysis,Arts & Humanities,3,Unassigned

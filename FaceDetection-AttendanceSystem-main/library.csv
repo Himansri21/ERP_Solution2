@@ -1,0 +1,4 @@
+StudentID,BookID,IssueDate,ReturnDate,BookTitle
+101,1002,2025-06-11,,Data Structures
+107,1003,2025-06-11,,History of Art
+108,1003,2025-06-11,N/A,History of Art

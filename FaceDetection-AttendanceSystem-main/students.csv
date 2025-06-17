@@ -1,0 +1,9 @@
+StudentID,FullName,DateOfBirth,Email,Major,Status
+101,Himanshu Sharma,2003-05-15,himanshu2003@gmail.com,Computer Science,Active
+102,John Smith,2002-09-20,john.s@example.com,Computer Science,Active
+103,Jane Doe,2002-11-10,jane.d@example.com,Business Administration,Active
+104,Peter Jones,2001-03-25,peter.j@example.com,Mechanical Engineering,Active
+105,Mary Williams,2003-01-30,mary.w@example.com,Arts & Humanities,Active
+106,David Brown,2001-07-12,david.b@example.com,Computer Science,Inactive
+107,Astha Raghuvanshi,2003-08-01,astha233544@gmail.com,Computer Science,Active
+108,Stuti Tiwari,2003-10-13,stuti1343@gmail.com,Computer Science,Active

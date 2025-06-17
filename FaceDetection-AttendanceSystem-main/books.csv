@@ -1,0 +1,8 @@
+BookID,Title,Author,Genre,Quantity,AvailableQuantity
+1001,Engineering Mathematics,A.R.Laxman,MAthematics,3,2
+1002,The Hitchhiker's Guide to the Galaxy,Douglas Adams,Science Fiction,5,5
+1003,Pride and Prejudice,Jane Austen,Classic Romance,3,3
+1004,To Kill a Mockingbird,Harper Lee,Classic Fiction,4,4
+1005,1984,George Orwell,Dystopian Fiction,2,1
+1006,A Brief History of Time,Stephen Hawking,Popular Science,3,3
+1007,Introduction to Algorithms,Thomas H. Cormen,Computer Science,10,10

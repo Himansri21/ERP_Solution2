@@ -1,0 +1,175 @@
+# my.kv
+# UPDATED: Adds a video feed and Stop button to the Dataset screen.
+
+#:kivy 1.11.1
+
+WindowManager:
+    AttendenceWindow:
+    DatasetWindow:
+
+<Button>:
+    font_size:15
+    color:1,0.6,0.7,1
+    background_color: 0.3,0.4,0.5,1
+
+<Label>:
+    font_size:15
+    color:0.23,0.62,0.62,1
+    pos_hint:{"x":0}
+    background_color: 0.3,0.4,0.5,1
+    valign : "middle"
+    halign : "center"
+
+<TextInput>:
+    font_size:15
+    color:1,0.6,0.7,1
+    pos_hint:{"x":0.5}
+
+<AttendenceWindow>:
+    name: "main"
+    FloatLayout:
+        # --- Top navigation bar ---
+        Button:
+            text:"Attendance"
+            on_release: app.root.current = "main"
+            pos_hint:{"x":0,"top":1}
+            size_hint: 0.20,0.10
+        Button:
+            text:"Train Faces"
+            pos_hint:{"x":0.20,"top":1}
+            size_hint: 0.20,0.10
+            on_press: app.startTrain()
+        Button:
+            text:"Create Dataset"
+            on_release: app.root.current = "second"; root.manager.transition.direction = "left"
+            pos_hint:{"x":0.40,"top":1}
+            size_hint: 0.20,0.10
+        Button:
+            text:"Show Users"
+            on_release: app.UserList()
+            pos_hint:{"x":0.60,"top":1}
+            size_hint: 0.20,0.10
+        Button:
+            text:"Show Attendance"
+            on_release: app.AttendanceList()
+            pos_hint:{"x":0.80,"top":1}
+            size_hint: 0.20,0.10
+        
+        # --- Main content ---
+        Image:
+            id: vid
+            size_hint: 1, 0.6
+            allow_stretch: True
+            pos_hint: {'x':0, 'top':0.87}
+        Label:
+            text:"Enter Your User ID: "
+            pos_hint:{"x":0,"top":0.25}
+            size_hint: 0.25,0.05
+        TextInput:
+            id:user_id
+            multiline:False
+            pos_hint:{"x":0.29,"top":0.25}
+            size_hint: 0.7,0.05
+        Button:
+            text : "Recognize Face"
+            pos_hint:{"x":0.025,"top":0.15}
+            size_hint: 0.45,0.10
+            on_press : app.startAttendance()
+        Button:
+            text : "Stop"
+            pos_hint:{"x":0.525,"top":0.15}
+            size_hint: 0.45,0.10
+            on_press : app.break_loop()
+        Label:
+            id:info
+            text: ""
+            pos_hint:{"x":0.025,"top":0.05}
+            size_hint: 0.95,0.05
+
+<DatasetWindow>:
+    name: "second"
+    on_pre_enter: app.load_students_for_spinner()
+    # This is crucial: stop the camera if the user leaves the screen
+    on_leave: app.stopDataset()
+
+    FloatLayout:
+        # --- Top navigation bar (same as before) ---
+        Button:
+            text:"Attendance"
+            on_release: app.root.current = "main"; root.manager.transition.direction = "right"
+            pos_hint:{"x":0,"top":1}
+            size_hint: 0.20,0.10
+        Button:
+            text:"Train Faces"
+            pos_hint:{"x":0.20,"top":1}
+            size_hint: 0.20,0.10
+            on_press: app.startTrain()
+        Button:
+            text:"Create Dataset"
+            on_release: app.root.current = "second"
+            pos_hint:{"x":0.40,"top":1}
+            size_hint: 0.20,0.10
+        Button:
+            text:"Show Users"
+            on_release: app.UserList()
+            pos_hint:{"x":0.60,"top":1}
+            size_hint: 0.20,0.10
+        Button:
+            text:"Show Attendance"
+            on_release: app.AttendanceList()
+            pos_hint:{"x":0.80,"top":1}
+            size_hint: 0.20,0.10
+        
+        # <<< --- START OF UI CHANGES --- >>>
+
+        # 1. Add Image widget for camera feed
+        Image:
+            id: capture_vid
+            size_hint: 0.95, 0.4
+            allow_stretch: True
+            pos_hint: {'center_x': 0.5, 'top': 0.88}
+
+        # 2. Controls below the video feed
+        Label:
+            text:"Select Student:"
+            pos_hint:{"x":0.025,"top":0.45}
+            size_hint: 0.3, 0.05
+
+        Spinner:
+            id: student_spinner
+            text: "Click to select a student"
+            pos_hint:{"x":0.325,"top":0.45}
+            size_hint: 0.65, 0.05
+            
+        Label:
+            text:"Snaps to take:"
+            pos_hint:{"x":0.025,"top":0.38}
+            size_hint: 0.3,0.05
+
+        TextInput:
+            id:snap
+            multiline:False
+            text: "50"
+            pos_hint:{"x":0.325,"top":0.38}
+            size_hint: 0.65,0.05
+            
+        # 3. New Start/Stop buttons
+        Button:
+            text : "Start Face Capture"
+            pos_hint:{"x":0.025,"top":0.25}
+            size_hint: 0.45,0.10
+            on_press : app.startDataset()
+        
+        Button:
+            text : "Stop Capture"
+            pos_hint:{"x":0.525,"top":0.25}
+            size_hint: 0.45,0.10
+            on_press : app.stopDataset()
+
+        Label:
+            id:info
+            text: ""
+            pos_hint:{"x":0.025,"top":0.1}
+            size_hint: 0.95,0.05
+        
+        # <<< --- END OF UI CHANGES --- >>>
